@@ -63,12 +63,11 @@ function Profile() {
     <div className="profile">
       <header className="profileHeader">
         <p className="pageHeader">My Profile</p>
-        <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
       </header>
 
-      <main>
+      <main className="profileDetailsMain">
         <div className="profileDetailsHeader">
-          <p className="profileDetailsText">Personal Details</p>
+          <p className="personalDetailsText">Personal Details</p>
           <p className="changePersonalDetails" onClick={() => {
             changeDetails && onSubmit()
             setChangeDetails((prevState) => !prevState)
@@ -94,6 +93,8 @@ function Profile() {
           <p>Sell or rent your home</p>
           <img src={arrowRight} alt="arrow right" />
         </Link>
+
+        <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
       </main>
     </div>
   )

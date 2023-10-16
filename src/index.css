@@ -30,6 +30,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .showPassword {
@@ -46,7 +47,7 @@ header {
 
 .forgotPasswordLink {
   cursor: pointer;
-  color: #00cc66;
+  color: #0000FF;
   font-weight: 600;
   /* text-align: right; */
   position: absolute;
@@ -76,7 +77,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; 
+  position: relative;
 
   @media (min-width: 768px) {
     width: 30%;
@@ -84,6 +85,7 @@ header {
 }
 
 @media (min-width: 1100px) {
+
   .input,
   .passwordInput,
   .emailInput,
@@ -138,6 +140,7 @@ header {
 }
 
 @media (min-width: 1024px) {
+
   .pageContainer,
   .offers,
   .profile,
@@ -267,6 +270,7 @@ header {
 }
 
 @media (min-width: 1024px) {
+
   .signInBar,
   .signUpBar {
     justify-content: center;
@@ -656,21 +660,14 @@ header {
   margin-bottom: 10rem;
 }
 
-.profileHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.profileDetailsMain {
+  margin-left: 35%;
 }
 
-.logOut {
-  cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #00cc66;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+.profileHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profileDetailsHeader {
@@ -686,7 +683,7 @@ header {
 .changePersonalDetails {
   cursor: pointer;
   font-weight: 600;
-  color: #00cc66;
+  color: #0000FF;
 }
 
 .profileCard {
@@ -714,10 +711,6 @@ header {
   width: 100%;
 }
 
-.profileNameActive {
-  /* background-color: rgba(44, 44, 44, 0.1); */
-}
-
 .profileEmail,
 .profileAddress,
 .profileAddressActive,
@@ -725,12 +718,36 @@ header {
   font-weight: 500;
 }
 
+.profileNameActive {
+  /* background-color: rgba(44, 44, 44, 0.1); */
+  color: #8f8f8f;
+}
+
 .profileEmailActive {
   /* background-color: rgba(44, 44, 44, 0.1); */
+  color: #8f8f8f;
 }
 
 .profileAddressActive {
   /* background-color: rgba(44, 44, 44, 0.1); */
+  color: #8f8f8f;
+}
+
+.logOut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #000000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  max-width: 500px;
+  margin-left: 17%;
 }
 
 .createListing {

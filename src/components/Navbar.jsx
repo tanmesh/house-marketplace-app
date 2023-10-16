@@ -14,9 +14,9 @@ function Navbar() {
   }
 
   const nameHelper = (route) => {
-    return (route === location.pathname) 
-    ? 'navbarListItemNameActive' 
-    : 'navbarListItemName'
+    return (route === location.pathname)
+      ? 'navbarListItemNameActive'
+      : 'navbarListItemName'
   }
 
   return (
