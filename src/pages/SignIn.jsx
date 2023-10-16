@@ -6,6 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react'
+import OAuth from '../components/OAuth';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false)
@@ -84,11 +85,11 @@ function SignIn() {
               <ArrowRightIcon fill='#ffffff' width='34px' height='34px' />
             </button>
           </div>
-
-          <Link to='/sign-up' className='registerLink'>New user? Sign Up here</Link>
         </form>
 
-        {/* Google OAuth  */}
+        <OAuth />
+
+        <Link to='/sign-up' className='registerLink'>New user? Sign Up here</Link>
       </div>
     </>
   )

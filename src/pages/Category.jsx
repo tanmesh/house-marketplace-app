@@ -8,7 +8,7 @@ import Spinner from '../components/Spinner';
 import React from 'react'
 import ListingItem from '../components/ListingItem';
 
-function Offers() {
+function Category() {
     const [listings, setListings] = useState()
     const [loading, setLoading] = useState(true)
 
@@ -22,7 +22,7 @@ function Offers() {
 
                 // Create a query
                 const q = query(listingRef,
-                    where('offer', '==', true),
+                    where('type', '==', params.categoryName),
                     orderBy('timestamp', 'desc'),
                     limit(10))
 
@@ -45,12 +45,16 @@ function Offers() {
         }
 
         fetchListings()
-    }, [])
+    }, [params.categoryName])
 
     return (
         <div className="category">
             <header>
-                <p className="pageHeader">Offers</p>
+                <p className="pageHeader">
+                    {params.categoryName === 'rent'
+                        ? 'Places for rent'
+                        : 'Places for sale'}
+                </p>
             </header>
 
             {loading
@@ -68,11 +72,11 @@ function Offers() {
                             </ul>
                         </main>
                     )
-                    : <p>There are no current offers.</p>
+                    : <p>No listing for {params.categoryName}</p>
                 )
             }
         </div>
     )
 }
 
-export default Offers
+export default Category

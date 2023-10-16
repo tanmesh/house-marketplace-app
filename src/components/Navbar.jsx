@@ -25,7 +25,7 @@ function Navbar() {
         <ul className="navbarListItems">
           <li className="navbarListItem">
             <OfferIcon fill={fillHelper('/offer')} width='36px' height='36px' onClick={() => navigate('/offer')} />
-            <p className={nameHelper('/offer')}>Offer</p>
+            <p className={nameHelper('/offer')}>Offers</p>
           </li>
 
           <li className="navbarListItem">

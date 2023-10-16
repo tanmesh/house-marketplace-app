@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { ReactComponent as EditIcon } from '../assets/svg/editIcon.svg'
-import { useNavigate } from "react-router-dom";
-import { updateDoc } from "firebase/firestore";
+import { Link, useNavigate } from "react-router-dom";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase.config";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React from 'react'
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import homeIcon from '../assets/svg/homeIcon.svg'
 
 function Profile() {
   const auth = getAuth()
@@ -25,13 +29,41 @@ function Profile() {
     navigate('/')
   }
 
-  const onSubmit = () => {
-    console.log(123)
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }
+    ))
   }
+
+  const onSubmit = async () => {
+    try {
+      if (auth.currentUser.user === formData.user) {
+        await updateProfile(auth.currentUser, {
+          displayName: formData.name
+        })
+
+        const userRef = doc(db, 'users', auth.currentUser.uid)
+
+        await updateDoc(userRef, {
+          name: formData.name
+        })
+      }
+    } catch (error) {
+      toast.error('Couldnt update!')
+    }
+  }
+
+  const handleCreateListing = () => {
+    navigate('/create-listing')
+  }
+
   return (
     <div className="profile">
-      <header className="profileHeader flex">
+      <header className="profileHeader">
         <p className="pageHeader">My Profile</p>
+        <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
       </header>
 
       <main>
@@ -46,16 +78,23 @@ function Profile() {
         </div>
 
         <div className="profileCard">
-          <div className="profileName">Name: {formData.name}</div>
+          <form>
+            <input type="text" id='name'
+              className={!changeDetails ? 'profileName' : 'profileNameActive'}
+              disabled={!changeDetails} value={formData.name} onChange={onChange} />
+
+            <input type="text" id='email'
+              className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
+              disabled={!changeDetails} value={formData.email} onChange={onChange} />
+          </form>
         </div>
 
-        <div className="profileCard flex">
-          <div className="profileEmail">Email: {formData.email}</div>
-          <EditIcon width='15px' height='15px' />
-        </div>
+        <Link to='/create-listing' className='createListing'>
+          <img src={homeIcon} alt="home" />
+          <p>Sell or rent your home</p>
+          <img src={arrowRight} alt="arrow right" />
+        </Link>
       </main>
-
-      <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
     </div>
   )
 

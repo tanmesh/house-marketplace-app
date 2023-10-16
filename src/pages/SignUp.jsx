@@ -8,16 +8,17 @@ import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React from 'react'
+import OAuth from '../components/OAuth';
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   })
 
-  const { username, email, password } = formData
+  const { name, email, password } = formData
 
   const navigate = useNavigate()
 
@@ -39,7 +40,7 @@ function SignUp() {
       const user = userCredential.user
 
       updateProfile(auth.currentUser, {
-        displayName: username,
+        displayName: name,
       })
 
       const formDataCopy = {...formData}
@@ -64,7 +65,7 @@ function SignUp() {
 
         <form onSubmit={onSubmit}>
           <input type="text" className="nameInput"
-            placeholder='Name' id='username' value={username}
+            placeholder='Name' id='name' value={name}
             onChange={onChange} />
 
           <input type="email" className="emailInput"
@@ -87,11 +88,11 @@ function SignUp() {
               <ArrowRightIcon fill='#ffffff' width='34px' height='34px' />
             </button>
           </div>
-
-          <Link to='/sign-in' className='registerLink'>Go back to Sign In</Link>
         </form>
 
-        {/* Google OAuth  */}
+        <OAuth />
+
+        <Link to='/sign-in' className='registerLink'>Go back to Sign In</Link>
       </div>
     </>
   )
