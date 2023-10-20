@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
-import { ReactComponent as EditIcon } from '../assets/svg/editIcon.svg'
 import { Link, useNavigate } from "react-router-dom";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase.config";
@@ -12,17 +11,12 @@ import homeIcon from '../assets/svg/homeIcon.svg'
 
 function Profile() {
   const auth = getAuth()
-
   const navigate = useNavigate()
-
   const [changeDetails, setChangeDetails] = useState(false)
-
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
   })
-
-  // const [name, email] = formData
 
   const handleLogOut = () => {
     auth.signOut()
@@ -53,10 +47,6 @@ function Profile() {
     } catch (error) {
       toast.error('Couldnt update!')
     }
-  }
-
-  const handleCreateListing = () => {
-    navigate('/create-listing')
   }
 
   return (
