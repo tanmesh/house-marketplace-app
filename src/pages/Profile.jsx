@@ -1,6 +1,6 @@
 import { getAuth, updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { updateDoc, doc, collection, getDocs, query, orderBy, deleteDoc } from "firebase/firestore";
+import { updateDoc, doc, collection, getDocs, query, where, orderBy, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,6 +30,7 @@ function Profile() {
       const listingRef = collection(db, 'listings')
 
       const q = query(listingRef,
+        where('userRef', '==', auth.currentUser.uid),
         orderBy('timestamp', 'desc'))
 
       const querySnap = await getDocs(q)
@@ -47,7 +48,7 @@ function Profile() {
     }
 
     fetchListings()
-  }, [])
+  }, [auth.currentUser.uid])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -98,34 +99,36 @@ function Profile() {
         <p className="pageHeader">My Profile</p>
       </header>
 
-      <main className="profileDetailsMain">
-        <div className="profileDetailsHeader">
-          <p className="personalDetailsText">Personal Details</p>
-          <p className="changePersonalDetails" onClick={() => {
-            changeDetails && onSubmit()
-            setChangeDetails((prevState) => !prevState)
-          }}>
-            {changeDetails ? 'done' : 'change'}
-          </p>
+      <main>
+        <div className="profileDetailsMain">
+          <div className="profileDetailsHeader">
+            <p className="personalDetailsText">Personal Details</p>
+            <p className="changePersonalDetails" onClick={() => {
+              changeDetails && onSubmit()
+              setChangeDetails((prevState) => !prevState)
+            }}>
+              {changeDetails ? 'done' : 'change'}
+            </p>
+          </div>
+
+          <div className="profileCard">
+            <form>
+              <input type="text" id='name'
+                className={!changeDetails ? 'profileName' : 'profileNameActive'}
+                disabled={!changeDetails} value={formData.name} onChange={onChange} />
+
+              <input type="text" id='email'
+                className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
+                disabled={!changeDetails} value={formData.email} onChange={onChange} />
+            </form>
+          </div>
+
+          <Link to='/create-listing' className='createListing'>
+            <img src={homeIcon} alt="home" />
+            <p>Sell or rent your home</p>
+            <img src={arrowRight} alt="arrow right" />
+          </Link>
         </div>
-
-        <div className="profileCard">
-          <form>
-            <input type="text" id='name'
-              className={!changeDetails ? 'profileName' : 'profileNameActive'}
-              disabled={!changeDetails} value={formData.name} onChange={onChange} />
-
-            <input type="text" id='email'
-              className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
-              disabled={!changeDetails} value={formData.email} onChange={onChange} />
-          </form>
-        </div>
-
-        <Link to='/create-listing' className='createListing'>
-          <img src={homeIcon} alt="home" />
-          <p>Sell or rent your home</p>
-          <img src={arrowRight} alt="arrow right" />
-        </Link>
 
         {!loading && listings?.length > 0 && (
           <div>

@@ -39,7 +39,7 @@ function OAuth() {
 
     return (
         <div className='socialLogin'>
-            <p>Sign {location.pathname === '/sign-up' ? 'Up' : 'In'} with</p>
+            <p>Sign-{location.pathname === '/sign-up' ? 'Up' : 'In'} with :</p>
             <button className="socialIconDiv" onClick={onGoogleClick}>
                 <img className='socialIconImg' src={googleIcon} alt="google" />
             </button>

@@ -95,7 +95,7 @@ function Offers() {
                     ? (
                         <>
                             <main>
-                                <ul className="cateogryListings">
+                                <ul className="categoryListings">
                                     {listings.map((listing) => (
                                         <ListingItem
                                             id={listing.id}

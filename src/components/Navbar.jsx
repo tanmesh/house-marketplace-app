@@ -21,18 +21,18 @@ function Navbar() {
     <footer className="navbar">
       <nav className="navbarNav">
         <ul className="navbarListItems">
-          <li className="navbarListItem">
-            <OfferIcon fill={fillHelper('/offer')} width='36px' height='36px' onClick={() => navigate('/offer')} />
+          <li className="navbarListItem" onClick={() => navigate('/offer')}>
+            <OfferIcon fill={fillHelper('/offer')} className='navbarListItemStyle' />
             <p className={nameHelper('/offer')}>Offers</p>
           </li>
 
-          <li className="navbarListItem">
-            <ExploreIcon fill={fillHelper('/')} width='36px' height='36px' onClick={() => navigate('/')} />
+          <li className="navbarListItem" onClick={() => navigate('/')} >
+            <ExploreIcon fill={fillHelper('/')} className='navbarListItemStyle' />
             <p className={nameHelper('/')}>Explore</p>
           </li>
 
-          <li className="navbarListItem">
-            <ProfileIcon fill={fillHelper('/profile')} width='36px' height='36px' onClick={() => navigate('/profile')} />
+          <li className="navbarListItem" onClick={() => navigate('/profile')}>
+            <ProfileIcon fill={fillHelper('/profile')} className='navbarListItemStyle' />
             <p className={nameHelper('/profile')}>
               Profile
               {/* {userName ? `${userName}` : 'Profile'} */}
