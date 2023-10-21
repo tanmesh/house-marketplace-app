@@ -18,7 +18,6 @@ function ForgotPassword() {
     try {
       const auth = getAuth()
       await sendPasswordResetEmail(auth, email)
-      console.log('Email is send!')
       toast.success('Email is send!')
     } catch(e) {
       toast.error('Could not send resent email.')

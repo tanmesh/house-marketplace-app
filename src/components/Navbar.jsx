@@ -39,6 +39,13 @@ function Navbar() {
               {/* @todo using session to display Username instead of Profile */}
             </p>
           </li>
+
+          <li className="navbarListItem" onClick={() => navigate('/about')}>
+            <ProfileIcon fill={fillHelper('/about')} className='navbarListItemStyle' />
+            <p className={nameHelper('/about')}>
+              About
+            </p>
+          </li>
         </ul>
       </nav>
     </footer>

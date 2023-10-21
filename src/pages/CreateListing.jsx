@@ -101,7 +101,6 @@ function CreateListing() {
       const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address='${address.trim()}'&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
       const data = await response.json()
 
-      console.log(data)
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0
       location = data.status === 'ZERO_RESULTS' ? 'undefined' : data.results[0]?.formatted_address
@@ -128,7 +127,6 @@ function CreateListing() {
     })
 
     try {
-      console.log('ImgUrls: ', imgUrls)
       // Store in DB
       const formDataCopy = {
         ...formData,
@@ -144,8 +142,6 @@ function CreateListing() {
         delete formDataCopy.discountedPrice
       )
       const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
-
-      console.log(formDataCopy)
 
       setLoading(false)
       toast.success('Listing added!')

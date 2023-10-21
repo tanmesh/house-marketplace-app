@@ -13,7 +13,7 @@ import Spinner from '../components/Spinner'
 @todo
 
 1. fix lat long UI
-2. decrease navbar width for mobile 
+
 */
 
 function EditListing() {
@@ -61,8 +61,6 @@ function EditListing() {
 
     // Fetch listing to edit
     useEffect(() => {
-        setLoading(true)
-
         const fetchListing = async () => {
             const docRef = doc(db, 'listings', params.listingId)
             const docSnap = await getDoc(docRef)
@@ -76,7 +74,7 @@ function EditListing() {
                 toast.error('Listing does not exits!')
             }
         }
-
+        setLoading(true)
         fetchListing()
     }, [params.listingId, navigate])
 
@@ -91,11 +89,9 @@ function EditListing() {
                 }
             })
         }
-
         return () => {
             isMounted.current = false
         }
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted])
 
@@ -105,7 +101,7 @@ function EditListing() {
             toast.error('Not authorized to edit this listing!')
             navigate('/')
         }
-    }, [listing, auth.currentUser.uid, navigate])
+    }, [auth.currentUser.uid, listing, navigate])
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -134,7 +130,6 @@ function EditListing() {
             const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address='${address.trim()}'&key=${process.env.REACT_APP_GEOCODE_API_KEY}`)
             const data = await response.json()
 
-            console.log(data)
             geolocation.lat = data.results[0]?.geometry.location.lat ?? 0
             geolocation.lng = data.results[0]?.geometry.location.lng ?? 0
             location = data.status === 'ZERO_RESULTS' ? 'undefined' : data.results[0]?.formatted_address
@@ -487,7 +482,7 @@ function EditListing() {
                     />
 
                     <button type='submit' className='primaryButton createListingButton'>
-                        Create Listing
+                        Edit Listing
                     </button>
                 </form>
             </main>

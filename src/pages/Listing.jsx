@@ -63,7 +63,6 @@ function Listing() {
               className="swiperSlideDiv">
             </div>
           </SwiperSlide>
-
         ))}
       </Swiper>
 
@@ -120,10 +119,17 @@ function Listing() {
         <Map lat={listing.geolocation.lat} lng={listing.geolocation.lng} location={listing.location} />
 
         {auth.currentUser?.uid !== listing.userRef && (
-          <Link
-            to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`}
-            className='primaryButton'>Contact Landord
-          </Link>
+          <div className='buttonDiv'>
+            <Link
+              to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.location}`}
+              className='primaryButton'>Contact Landord
+            </Link>
+
+            <Link
+              to={`/make-booking`}
+              className='primaryButton'>Make booking
+            </Link>
+          </div>
         )}
       </div>
     </main>

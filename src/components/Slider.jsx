@@ -1,13 +1,17 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/swiper-bundle.css';
-import SwiperCore from 'swiper';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+// import 'swiper/swiper-bundle.css';
+// import SwiperCore from 'swiper';
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
 import { db } from '../firebase.config';
 import Spinner from './Spinner';
 import { useNavigate } from 'react-router-dom';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 function Slider() {
     const [loading, setLoading] = useState(true)
@@ -56,7 +60,9 @@ function Slider() {
                 scrollbar={{ draggable: true }}
                 pagination={{ clickable: true }}>
                 {listings.map(({ data, id }) => (
-                    <SwiperSlide key={id} onClick={() => navigate(`/category/${data.type}/${id}`)}>
+                    <SwiperSlide
+                        key={id}
+                        onClick={() => navigate(`/category/${data.type}/${id}`)}>
                         <div
                             style={{
                                 background: `url(${data.imgUrls[0]}) center no-repeat`,
@@ -75,7 +81,6 @@ function Slider() {
                             </p>
                         </div>
                     </SwiperSlide>
-
                 ))}
             </Swiper>
         </>

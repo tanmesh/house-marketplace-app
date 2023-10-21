@@ -14,6 +14,7 @@ import CreateListing from "./pages/CreateListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
 import EditListing from "./pages/EditListing";
+import Booking from "./pages/Booking";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="/edit-listing/:listingId" element={<EditListing />} />
               <Route path="/category/:categoryName/:listingId" element={<Listing />} />
               <Route path="/contact/:landlordId" element={<Contact />} />
+              <Route path="/make-booking/" element={<Booking />} />
             </Routes>
           </main>
 

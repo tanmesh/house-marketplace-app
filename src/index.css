@@ -114,6 +114,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 1100px) {
+    width: 20%;
+  }
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .removeIcon {
@@ -191,6 +201,8 @@ header {
 .pageHeader {
   font-size: 2rem;
   font-weight: 800;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 700px) {
@@ -406,7 +418,7 @@ header {
 }
 
 .swiperSlideDiv {
-  position: relative; 
+  /* position: relative;  */
   width: 100%;
   height: 100%;
 }
@@ -472,6 +484,11 @@ header {
 
 .exploreCategories a {
   width: 48%;
+
+  @media (min-width: 1024px) {
+    justify-self: center;
+    text-align: center;
+  }
 }
 
 .exploreCategoryImg {
@@ -481,11 +498,16 @@ header {
   border-radius: 1.5rem;
   object-fit: cover;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    height: 10vw;
+    width: 50%;
+  }
 }
 
 .exploreCategoryName {
   font-weight: 500;
-  text-align: left;
+  /* text-align: center; */
 }
 
 .category {
@@ -498,15 +520,20 @@ header {
 
 .categoryListing {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
   position: relative;
 }
 
-@media (max-width: 800px) {
-  .categoryListing {
-    flex-direction: column;
+.categoryListingDetailsDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    gap: 3rem;
   }
 }
 
@@ -514,36 +541,34 @@ header {
   display: contents;
 }
 
+/* .categoryListingImgDiv {
+  justify-content: center;
+} */
+
 .categoryListingImg {
-  width: 100%;
-  height: 100px;
   border-radius: 1.5rem;
   object-fit: cover;
   display: flex;
   justify-content: center;
-}
+  width: 100%;
+  height: 100px;
 
-@media (min-width: 1024px) {
-  .categoryListingImg {
-    width: 50%;
+  @media (min-width: 1024px) {
+    width: 500px;
     height: 217px;
   }
 }
 
+.iconDiv {
+  display: flex;
+
+  @media (min-width: 1024px) {
+    gap: 3rem;
+  }
+}
+
 .categoryListingDetails {
-  width: 30%;
-}
-
-@media (max-width: 800px) {
-  .categoryListingDetails {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .categoryListingDetails {
-    width: 30%;
-  }
+  width: 20rem;
 }
 
 .categoryListingLocation {
@@ -554,7 +579,6 @@ header {
   font-size: 0.7rem;
   opacity: 0.8;
   margin-bottom: 0;
-
 }
 
 .categoryListingName {
@@ -607,7 +631,7 @@ header {
 .something {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 2rem;
 }
 
@@ -733,7 +757,7 @@ header {
 .contactLandlord {
   margin-top: 2rem;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .landlordName {

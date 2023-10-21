@@ -1,6 +1,11 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import React from 'react'
 
+/*
+@todo:
+1. reset view 
+*/
+
 function Map({ lat, lng, location }) {
     return (
         <div className="leafletContainer">
