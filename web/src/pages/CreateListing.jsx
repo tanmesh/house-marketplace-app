@@ -132,7 +132,8 @@ function CreateListing() {
         ...formData,
         imgUrls,
         geolocation,
-        timestamp: serverTimestamp()
+        timestamp: serverTimestamp(),
+        sold: false,
       }
 
       formDataCopy.location = address

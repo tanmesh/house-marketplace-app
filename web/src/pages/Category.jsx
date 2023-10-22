@@ -35,10 +35,12 @@ function Category() {
 
                 const listings = []
                 querySnap.forEach((doc) => {
-                    return listings.push({
-                        id: doc.id,
-                        data: doc.data(),
-                    })
+                    if (doc.data().sold === false) {
+                        return listings.push({
+                            id: doc.id,
+                            data: doc.data(),
+                        })
+                    }
                 })
 
                 setListings(listings)

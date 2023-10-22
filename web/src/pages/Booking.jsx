@@ -10,6 +10,7 @@ import { loadStripe } from '@stripe/stripe-js';
 function Booking() {
     const [loading, setLoading] = useState(true)
     const [formData, setFormData] = useState(null)
+    const [amount, setAmount] = useState(0.00)
 
     const stripePromise = loadStripe('pk_test_51O3r5sKDwLQxxwC9qaa2Yk6o2CsO6cwn6upEClh124OqY1FqILbZTrqdjIxdxFr9D939mXJy9jAxvfNmo4UWjk8M00bC9BD5ZI');
 
@@ -23,14 +24,16 @@ function Booking() {
 
             if (docSnap.exists()) {
                 setFormData(docSnap.data())
-                console.log(docSnap.data())
+                const data = docSnap.data()
+                setAmount(data.offer
+                    ? parseFloat(data.offerPrice)
+                    : parseFloat(data.regularPrice))
                 setLoading(false)
             } else {
                 console.log("No such document!");
             }
         }
         fetchListing()
-
     }, [navigate, params.listingId])
 
     if (loading) {
@@ -108,7 +111,7 @@ function Booking() {
                             <input
                                 type="text"
                                 id="regularPrice"
-                                value={formData.offer ? formData.regularPrice : formData.regularPrice}
+                                value={amount}
                                 disabled={true}
                                 style={{ width: '100%' }}
                                 className='booking'
@@ -118,7 +121,7 @@ function Booking() {
                 </div>
 
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm />
+                    <CheckoutForm formData={formData} listingId={params.listingId} amount={amount} />
                 </Elements>
             </main>
         </div>

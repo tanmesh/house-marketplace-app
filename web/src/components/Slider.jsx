@@ -7,7 +7,6 @@ import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
 import { db } from '../firebase.config';
 import Spinner from './Spinner';
 import { useNavigate } from 'react-router-dom';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
@@ -31,10 +30,12 @@ function Slider() {
 
             const listings = []
             querySnap.forEach((doc) => {
-                return listings.push({
-                    id: doc.id,
-                    data: doc.data(),
-                })
+                if (doc.data().sold === false) {
+                    return listings.push({
+                        id: doc.id,
+                        data: doc.data(),
+                    })
+                }
             })
             setListings(listings)
             setLoading(false)

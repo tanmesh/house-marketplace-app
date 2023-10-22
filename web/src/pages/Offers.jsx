@@ -21,6 +21,7 @@ function Offers() {
                 // Create a query
                 const q = query(listingRef,
                     where('offer', '==', true),
+                    // where('sold', '==', false),
                     orderBy('timestamp', 'desc'),
                     limit(10))
 
@@ -32,10 +33,12 @@ function Offers() {
 
                 const listings = []
                 querySnap.forEach((doc) => {
-                    return listings.push({
-                        id: doc.id,
-                        data: doc.data(),
-                    })
+                    if (doc.data().sold === false) {
+                        return listings.push({
+                            id: doc.id,
+                            data: doc.data(),
+                        })
+                    }
                 })
 
                 setListings(listings)
