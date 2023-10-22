@@ -71,8 +71,7 @@ export default function CheckoutForm({ formData, listingId, amount }) {
             }
         } else {
             console.log('Error', error.message)
-            toast.error('Payment failed')
-            
+            toast.error('Payment failed')  
         }
     }
 

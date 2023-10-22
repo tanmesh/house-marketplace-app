@@ -24,10 +24,12 @@ function Booking() {
 
             if (docSnap.exists()) {
                 setFormData(docSnap.data())
-                const data = docSnap.data()
-                setAmount(data.offer
-                    ? parseFloat(data.offerPrice)
-                    : parseFloat(data.regularPrice))
+
+                const data = docSnap.data().offer
+                    ? parseFloat(docSnap.data().discountedPrice)
+                    : parseFloat(docSnap.data().regularPrice)
+
+                setAmount(data)
                 setLoading(false)
             } else {
                 console.log("No such document!");
