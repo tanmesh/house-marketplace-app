@@ -100,7 +100,7 @@ function Profile() {
         <p className="pageHeader">My Profile</p>
       </header>
 
-      <main>
+      <main className="profileMain">
         <div className="profileDetailsMain">
           <div className="profileDetailsHeader">
             <p className="personalDetailsText">Personal Details</p>
@@ -122,7 +122,7 @@ function Profile() {
               </div>
 
               <div className='formLabelInputDiv'>
-                <label >Email Id: </label>
+                <label className="formLabel">Email Id: </label>
                 <input type="text" id='email'
                   className={!changeDetails ? 'profileEmail' : 'profileEmailActive'}
                   disabled={!changeDetails} value={formData.email} onChange={onChange} />
@@ -131,11 +131,13 @@ function Profile() {
             </form>
           </div>
 
-          <Link to='/create-listing' className='createListing'>
-            <img src={homeIcon} alt="home" />
-            <p>Sell or rent your home</p>
-            <img src={arrowRight} alt="arrow right" />
-          </Link>
+          <div className='createListingMain'>
+            <Link to='/create-listing' className='createListing'>
+              <img src={homeIcon} alt="home" />
+              <p>Sell or rent your home</p>
+              <img src={arrowRight} alt="arrow right" />
+            </Link>
+          </div>
         </div>
 
         {!loading && listings?.length > 0 && (
@@ -153,9 +155,8 @@ function Profile() {
             </ul>
           </div>
         )}
-
-        <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
       </main>
+      <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
     </div>
   )
 }

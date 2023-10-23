@@ -26,6 +26,10 @@ button {
   border: none;
 }
 
+button:active {
+  transform: translateY(4px);
+}
+
 header {
   display: flex;
   align-items: center;
@@ -102,8 +106,9 @@ header {
 }
 
 .primaryButton {
+  border: 2px solid #aaaaaa;
   cursor: pointer;
-  background: #00cc66;
+  background: #aaaaaa;
   border-radius: 1rem;
   padding: 0.85rem 2rem;
   color: #ffffff;
@@ -118,6 +123,15 @@ header {
   @media (min-width: 1100px) {
     width: 30%;
   }
+}
+
+.primaryButton:hover {
+  border: 2px solid black;
+  background: #000000;
+}
+
+.primaryButton:active {
+  transform: translateY(4px);
 }
 
 .buttonDiv {
@@ -319,6 +333,11 @@ header {
 .signUpText {
   cursor: pointer;
   margin-right: 30px;
+}
+
+.signInButton:active,
+.signUpButton:active {
+  transform: translateY(4px);
 }
 
 @media (min-width: 1024px) {
@@ -525,6 +544,12 @@ header {
   align-items: center;
   margin-bottom: 1rem;
   position: relative;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12rem;
+  }
 }
 
 .categoryListingDetailsDiv {
@@ -534,6 +559,7 @@ header {
 
   @media (min-width: 1024px) {
     gap: 3rem;
+    width: 0%;
   }
 }
 
@@ -628,11 +654,12 @@ header {
   }
 }
 
-.something {
+.categoryListingDiv {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-bottom: 2rem;
+
 }
 
 .loadMore {
@@ -781,19 +808,27 @@ header {
 }
 
 .profile {
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
+}
+
+.about {
+  margin-bottom: 5rem;
+}
+
+.profileMain {
+  display: flex;
+  justify-content: center;
 }
 
 .profileDetailsMain {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  /* @media (min-width: 800px) {
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
+  justify-content: center;
+  width: 40%;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 }
 
 .profileHeader {
@@ -804,13 +839,31 @@ header {
 
 .profileDetailsHeader {
   display: flex;
-  justify-content: center;
-  max-width: 500px;
-  gap: 200px;
+  justify-content: space-between;
 }
 
 .personalDetailsText {
   font-weight: 600;
+}
+
+.createListing {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.2);
+  margin-top: 2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+
+  @media (max-width: 800px) {
+    width: 300px;
+  }
 }
 
 .changePersonalDetails {
@@ -824,12 +877,42 @@ header {
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.2);
-  max-width: 500px;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .profileDetails {
   display: flex;
   flex-direction: column;
+}
+
+.aboutCard {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.2);
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.aboutMain {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.createListingMain {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.entriesDiv {
+  margin-top: 1rem;
 }
 
 .booking,
@@ -845,12 +928,9 @@ header {
   /* width: 100%; */
 }
 
-.formLabel {
-  width: 100%;
-}
-
 .formLabelInputDiv {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   width: 100%;
 }
@@ -940,26 +1020,6 @@ header {
   transform: translate(-50%, -50%);
 }
 
-.createListing {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 0.25rem 1rem;
-  box-shadow: rgba(0, 0, 0, 0.2);
-  margin-top: 2rem;
-  font-weight: 600;
-  max-width: 500px;
-  width: 400px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@media (max-width: 800px) {
-  .createListing {
-    width: 300px;
-  }
-}
-
 .listingText {
   margin-top: 6rem;
   font-weight: 600;
@@ -974,8 +1034,8 @@ header {
 
 .formLabel {
   font-weight: 600;
-  margin-top: 1rem;
   display: block;
+  justify-content: right;
 }
 
 .formButtons {
@@ -998,6 +1058,16 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.formButton:active,
+.formInput:active,
+.formInputAddress:active,
+.formInputName:active,
+.formInputSmall:active,
+.formInputFile:active,
+.formButtonActive:active {
+  transform: translateY(4px);
 }
 
 .formButtonActive {
@@ -1071,6 +1141,15 @@ header {
 
 .createListingButton {
   margin-top: 5rem;
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+}
+
+.createListingButton:active {
+  transform: translateY(4px);
 }
 
 .offers {
@@ -1080,13 +1159,12 @@ header {
 .offerBadge {
   padding: 0.25rem 0.5rem;
   background-color: #000000;
-  color: #ffffff;
+  color: #040202;
   border-radius: 1rem;
   margin-left: 1rem;
   font-size: 0.8rem;
   opacity: 0.75;
 }
-
 
 .FormGroup {
   margin: 0 15px 20px;
@@ -1137,4 +1215,11 @@ header {
   background-color: #d782d9;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #e298d8;
   transform: scale(0.99);
+  /* all 100ms ease-in-out; */
+  /* transform: translateY(4px); */
+}
+
+.createListingMain {
+  display: flex;
+  justify-content: center;
 }

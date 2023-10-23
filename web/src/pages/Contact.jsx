@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase.config'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 /*
@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 function Contact() {
     const [message, setMessage] = useState('')
     const [landlord, setLandlord] = useState(null)
+    const [searchParams] = useSearchParams()
 
     const params = useParams()
 
@@ -50,7 +51,8 @@ function Contact() {
                                 value={message} onChange={onChange}></textarea>
                         </div>
 
-                        <a href='mailto:tanmeshnm@gmail.com?Subject=Yo&body=yoyo'>
+
+                        <a href={`mailto:${landlord.email}?Subject=${searchParams.get('listingName')}&body=${message}`}>
                             <button type='button' className="primaryButton">Send message</button>
                         </a>
                     </form>

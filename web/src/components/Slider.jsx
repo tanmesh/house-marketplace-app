@@ -57,7 +57,7 @@ function Slider() {
             <p className="exploreHeading">Recommended</p>
 
             <Swiper slidesPerView={1}
-                scrollbar={{ draggable: true }}
+                // scrollbar={{ draggable: true }}
                 pagination={{ clickable: true }}>
                 {listings.map(({ data, id }) => (
                     <SwiperSlide
@@ -77,7 +77,6 @@ function Slider() {
                                     ?? data.regularPrice?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                 {' '}
                                 {data.type === 'rent' && ' / Month'}
-
                             </p>
                         </div>
                     </SwiperSlide>
