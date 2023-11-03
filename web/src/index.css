@@ -287,7 +287,7 @@ header {
     font-size: 12px;
   }
 
-  font-weight: 600;
+  /* font-weight: 600; */
   color: #8f8f8f;
 }
 
@@ -459,7 +459,7 @@ header {
   position: absolute;
   top: 70px;
   left: 0;
-  font-weight: 600;
+  /* font-weight: 600; */
   max-width: 90%;
   font-size: 1.25rem;
   background-color: rgba(0, 0, 0, 0.8);
@@ -483,7 +483,7 @@ header {
   position: absolute;
   top: 143px;
   left: 11px;
-  font-weight: 600;
+  /* font-weight: 600; */
   max-width: 90%;
   background-color: #ffffff;
   padding: 0.25rem 0.5rem;
@@ -815,37 +815,6 @@ header {
   margin-bottom: 5rem;
 }
 
-.profileMain {
-  display: flex;
-  justify-content: center;
-}
-
-.profileDetailsMain {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 40%;
-
-  @media (max-width: 800px) {
-    width: 100%;
-  }
-}
-
-.profileHeader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.profileDetailsHeader {
-  display: flex;
-  justify-content: space-between;
-}
-
-.personalDetailsText {
-  font-weight: 600;
-}
-
 .createListing {
   background-color: #ffffff;
   border-radius: 1rem;
@@ -866,26 +835,102 @@ header {
   }
 }
 
-.changePersonalDetails {
-  cursor: pointer;
-  font-weight: 600;
-  color: #0000FF;
+.profileDetailsMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
-.profileCard {
+.profileDetailMain {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.createListingMain {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.profileDetailsHeader {
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+}
+
+.headerCard {
+  display: flex;
+  justify-content: center;
   background-color: #ffffff;
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  
+  /* @media (min-width: 1024px) {
+    width: 100%;
+  } */
 
   @media (min-width: 1024px) {
+    width: 80%;
+  }
+
+  @media (max-width: 800px) {
+    width: 300px;
+  }
+}
+
+.profileCard {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  
+  /* @media (min-width: 1024px) {
     width: 100%;
+  } */
+
+  @media (min-width: 1024px) {
+    width: 80%;
+  }
+
+  @media (max-width: 800px) {
+    width: 300px;
   }
 }
 
 .profileDetails {
   display: flex;
   flex-direction: column;
+}
+
+.profileMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profileHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.personalDetailsText {
+  font-weight: 600;
+}
+
+.changePersonalDetails {
+  cursor: pointer;
+  font-weight: 600;
+  color: #0000FF;
 }
 
 .aboutCard {
@@ -903,13 +948,6 @@ header {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-}
-
-.createListingMain {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  width: 100%;
 }
 
 .entriesDiv {
@@ -1018,11 +1056,11 @@ header {
   max-width: 500px;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 .listingText {
-  margin-top: 6rem;
+  margin-top: 3rem;
   font-weight: 600;
   justify-content: center;
   display: flex;
@@ -1034,7 +1072,7 @@ header {
 }
 
 .formLabel {
-  font-weight: 600;
+  /* font-weight: 600; */
   display: block;
   justify-content: right;
 }

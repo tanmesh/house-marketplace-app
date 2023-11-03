@@ -52,11 +52,11 @@ function Profile() {
   }, [auth.currentUser.uid])
 
   const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }
-    ))
+    // setFormData((prevState) => ({
+    //   ...prevState,
+    //   [e.target.id]: e.target.value,
+    // }
+    // ))
   }
 
   const onSubmit = async () => {
@@ -101,7 +101,7 @@ function Profile() {
       </header>
 
       <main className="profileMain">
-        <div className="profileDetailsMain">
+        {/* <div className="headerCard">
           <div className="profileDetailsHeader">
             <p className="personalDetailsText">Personal Details</p>
             <p className="changePersonalDetails" onClick={() => {
@@ -111,7 +111,9 @@ function Profile() {
               {changeDetails ? 'done' : 'change'}
             </p>
           </div>
+        </div> */}
 
+        <div className="profileDetailMain">
           <div className="profileCard">
             <form>
               <div className="formLabelInputDiv">
@@ -130,18 +132,18 @@ function Profile() {
 
             </form>
           </div>
+        </div>
 
-          <div className='createListingMain'>
-            <Link to='/create-listing' className='createListing'>
-              <img src={homeIcon} alt="home" />
-              <p>Sell or rent your home</p>
-              <img src={arrowRight} alt="arrow right" />
-            </Link>
-          </div>
+        <div className='createListingMain'>
+          <Link to='/create-listing' className='createListing'>
+            <img src={homeIcon} alt="home" />
+            <p>Sell or rent your home</p>
+            <img src={arrowRight} alt="arrow right" />
+          </Link>
         </div>
 
         {!loading && listings?.length > 0 && (
-          <div>
+          <div className="listingTextMain">
             <p className="listingText">My listings</p>
             <ul className="listingList">
               {listings.map((listing) => (
@@ -156,7 +158,14 @@ function Profile() {
           </div>
         )}
       </main>
+
       <button type='button' className="logOut" onClick={handleLogOut}>Log Out</button>
+
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   )
 }
