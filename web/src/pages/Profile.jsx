@@ -12,7 +12,9 @@ import ListingItem from "../components/ListingItem";
 function Profile() {
   const auth = getAuth()
   const navigate = useNavigate()
+  // eslint-disable-next-line
   const [changeDetails, setChangeDetails] = useState(false)
+  // eslint-disable-next-line
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
